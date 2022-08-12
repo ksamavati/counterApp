@@ -111,14 +111,3 @@ body {
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
-
-/*
- * Additions
- */
-.theCount {
-  font-size: 720pt;
-  margin: 50px;
-  font-size: 100pt;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}

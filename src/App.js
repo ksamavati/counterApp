@@ -1,21 +1,74 @@
 import React from "react";
-import { ReactDOM } from "react";
+import { AddButton } from "./components/AddButton";
+import { ResetButton } from "./components/ResetButton";
+import { SubtractButton } from "./components/SubtractButton";
+import { CustomAddSub } from "./components/CustomAddSub";
 
 class App extends React.Component {
-  state = {
-      name: "Kayvon",
-      age: "32"
-  }
+	state = {
+		count: 0
+	}
 
-  render() {
-      return (
-          <div>
-              <h1>Hey Devs</h1>
-              <p>Random number between 1 and 10: {Math.ceil((Math.random() * 10))}</p>
-              <p>My name is {this.state.name}</p>
-          </div>
+	subtractOne = () => {
+		this.setState({
+			count: this.state.count - 1
+		})
+	}
 
-      )
-  }
+	resetCount = () => {
+		this.setState({
+			count: 0
+		})
+	}
+
+	addOne = () => {
+		this.setState({
+			count: this.state.count + 1
+		})
+	}
+
+	customAdd = () => {
+		this.setState({
+			count: this.state.count + parseInt(document.getElementById("customBox").value)
+		})
+	}
+
+	customSubtract = () => {
+		this.setState({
+			count: this.state.count - parseInt(document.getElementById("customBox").value)
+		})
+	}
+
+	render() {
+		return (
+			<div className="cover-container-fluid d-flex h-100 p-3 mx-auto flex-column justify-content-center">
+				<header className="masthead mb-auto ">
+					<div className="inner d-flex justify-content-center">
+						<h3 className="masthead-brand">Counter App</h3>
+					</div>
+				</header>
+
+				<main role="main" className="inner cover">
+					<h1 className="display-1 theCount">{this.state.count}</h1>
+					<p className="lead">
+						<div className="btn-group">
+							<SubtractButton subtract={this.subtractOne} />
+							<ResetButton reset={this.resetCount} />
+							<AddButton add={this.addOne} />
+						</div><br /><br />
+					</p>
+					<CustomAddSub customAdd={this.customAdd} customSubtract={this.customSubtract} />
+				</main>
+
+				<footer className="mastfoot mt-auto">
+					<div className="inner">
+						<p></p>
+					</div>
+				</footer>
+			</div>
+
+		)
+	}
 }
-ReactDOM.render(<App />, document.getElementById('app'));
+// ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
