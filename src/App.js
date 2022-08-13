@@ -28,15 +28,21 @@ class App extends React.Component {
 	}
 
 	customAdd = () => {
-		this.setState({
-			count: this.state.count + parseInt(document.getElementById("customBox").value)
-		})
+		let num = parseInt(document.getElementById("customBox").value);
+		if (!isNaN(num)) {
+			this.setState({
+				count: this.state.count + parseInt(document.getElementById("customBox").value)
+			})
+		}
 	}
 
 	customSubtract = () => {
-		this.setState({
-			count: this.state.count - parseInt(document.getElementById("customBox").value)
-		})
+		let num = parseInt(document.getElementById("customBox").value);
+		if (!isNaN(num)) {
+			this.setState({
+				count: this.state.count - parseInt(document.getElementById("customBox").value)
+			})
+		}
 	}
 
 	render() {
@@ -50,13 +56,13 @@ class App extends React.Component {
 
 				<main role="main" className="inner cover">
 					<h1 className="display-1 theCount">{this.state.count}</h1>
-					<p className="lead">
+					<div className="lead">
 						<div className="btn-group">
 							<SubtractButton subtract={this.subtractOne} />
 							<ResetButton reset={this.resetCount} />
 							<AddButton add={this.addOne} />
 						</div><br /><br />
-					</p>
+					</div>
 					<CustomAddSub customAdd={this.customAdd} customSubtract={this.customSubtract} />
 				</main>
 
